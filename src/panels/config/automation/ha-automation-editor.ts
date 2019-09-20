@@ -37,10 +37,6 @@ function AutomationEditor(mountEl, props, mergeEl) {
   return render(h(Automation, props), mountEl, mergeEl);
 }
 
-const defaultTriggers = [{ platform: "state" }];
-const defaultConditions = [];
-const defaultActions = [{ service: "" }];
-
 export class HaAutomationEditor extends LitElement {
   public hass!: HomeAssistant;
   public automation!: AutomationEntity;
@@ -188,9 +184,9 @@ export class HaAutomationEditor extends LitElement {
         alias: this.hass.localize(
           "ui.panel.config.automation.editor.default_name"
         ),
-        trigger: defaultTriggers,
-        condition: defaultConditions,
-        action: defaultActions,
+        trigger: [{ platform: "state" }],
+        condition: [],
+        action: [{ service: "" }],
         ...getAutomationEditorInitData(),
       };
     }
